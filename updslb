@@ -7,7 +7,7 @@ set "TEMP_FILE=%temp%\datest.txt"
 :: Use PowerShell to download the file with a forced refresh
 powershell -Command "Invoke-WebRequest -Uri '%URL%' -OutFile '%TEMP_FILE%' -Headers @{\"Cache-Control\"=\"no-cache\"}"
 
-:: Check if the file contains the text "mb"
+:: Check if the file contains the text
 findstr /i "nn" "%TEMP_FILE%" >nul
 if %errorlevel%==0 (
     echo Update required! Downloading content...
