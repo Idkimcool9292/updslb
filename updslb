@@ -12,7 +12,7 @@ findstr /i "nn" "%TEMP_FILE%" >nul
 if %errorlevel%==0 (
     echo Update required! Downloading content...
     powershell -Command "Invoke-WebRequest -Uri '%URL%' -OutFile 'downloaded_script2.0.bat' -Headers @{\"Cache-Control\"=\"no-cache\"}"
-    echo File downloaded as "downloaded_script1.0.bat"
+    echo File downloaded as "downloaded_script2.0.bat"
 ) else (
     echo there are no current downloads needed.
 )
