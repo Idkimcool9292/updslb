@@ -1,0 +1,25 @@
+@echo off
+
+:: Define the URL and the temporary file
+set "URL=https://raw.githubusercontent.com/Idkimcool9292/testupdate/main/datest"
+set "TEMP_FILE=%temp%\datest.txt"
+
+:: Use PowerShell to download the file with a forced refresh
+powershell -Command "Invoke-WebRequest -Uri '%URL%' -OutFile '%TEMP_FILE%' -Headers @{\"Cache-Control\"=\"no-cache\"}"
+
+:: Check if the file contains the text "mb"
+findstr /i "mb" "%TEMP_FILE%" >nul
+if %errorlevel%==0 (
+    echo Update required! Downloading content...
+    powershell -Command "Invoke-WebRequest -Uri '%URL%' -OutFile 'downloaded_script2.0.bat' -Headers @{\"Cache-Control\"=\"no-cache\"}"
+    echo File downloaded as "downloaded_script1.0.bat"
+) else (
+    echo there are no current downloads needed.
+)
+
+:: Cleanup temporary file
+del "%TEMP_FILE%"
+
+pause
+
+:: 
